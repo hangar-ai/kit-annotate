@@ -1,0 +1,10 @@
+{
+  "description": "Circle what is wrong on a capture, write a word beside it, and the agent that asked receives the annotated image and your notes.",
+  "topics": [
+    "hangar-kit",
+    "hangar",
+    "claude-code",
+    "screenshot",
+    "feedback"
+  ]
+}
