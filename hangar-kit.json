@@ -17,6 +17,7 @@
       "id": "annotate",
       "title": "Annotate",
       "entry": "tabs/annotate/index.html",
+      "native": "tabs/annotate.wasm",
       "icon": "icon.svg",
       "permissions": ["files.read", "files.write", "panes.send"],
       "params": {

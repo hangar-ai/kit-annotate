@@ -58,6 +58,18 @@ test("the tab: three permissions and nothing more, one tab per image", () => {
   assert.notEqual(tab.singleton, true, "one tab per image: another image is another tab");
 });
 
+test("the native tab: a WebAssembly module of the kit, beside the page Hangar 1.x opens", () => {
+  const [tab] = manifest.tabs;
+  assert.equal(manifest.schema, 1, "a native field needs no schema 2: an older Hangar ignores it");
+  assert.equal(tab.native, "tabs/annotate.wasm");
+  safePath(tab.native, [".wasm"], "native");
+  safePath(tab.entry, [".html"], "entry");
+  const head = fs.readFileSync(path.join(KIT, tab.native)).subarray(0, 8);
+  assert.deepEqual([...head], [0x00, 0x61, 0x73, 0x6d, 0x01, 0x00, 0x00, 0x00], "a WebAssembly module, version 1");
+  assert.ok(exists("native/Cargo.toml") && exists("native/Cargo.lock"), "the source it is built from, locked");
+  assert.ok(exists("scripts/build-native.sh"));
+});
+
 test("the params: only a path, and what its rule lets through", () => {
   const { params } = manifest.tabs[0];
   assert.deepEqual(Object.keys(params), ["path"]);
@@ -136,7 +148,8 @@ test("nothing personal, nothing outside its folder is named", () => {
   const files = [];
   const walk = (dir) => {
     for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-      if ([".git", ".hangar-ui", "node_modules"].includes(entry.name)) continue;
+      // `target`: the native tab's build, never committed (only tabs/annotate.wasm is).
+      if ([".git", ".hangar-ui", "node_modules", "target"].includes(entry.name)) continue;
       if (entry.isDirectory()) walk(path.join(dir, entry.name));
       else files.push(path.join(dir, entry.name));
     }
