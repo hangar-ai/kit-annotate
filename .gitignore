@@ -1,4 +1,3 @@
-.hangar-ui/
 node_modules/
 # The native tab's build (scripts/build-native.sh): only tabs/annotate.wasm is kept.
 native/target/

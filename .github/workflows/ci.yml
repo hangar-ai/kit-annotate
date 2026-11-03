@@ -11,9 +11,9 @@ permissions:
 
 jobs:
   kit-check:
-    uses: hangar-ai/.github/.github/workflows/kit-check.yml@v1
+    uses: hangar-ai/.github/.github/workflows/kit-check.yml@rust-rewrite
 
-  # The native tab: its tests, and the committed module checked against the
+  # The tab is native: its tests, and the committed module checked against the
   # source. Hangar runs tabs/annotate.wasm as it is committed, so a module
   # older than native/ would ship old behaviour.
   native:
@@ -40,11 +40,5 @@ jobs:
         run: cargo test --manifest-path native/Cargo.toml --locked
       - name: Clippy
         run: cargo clippy --manifest-path native/Cargo.toml --locked --all-targets -- -D warnings
-      - name: Build the module
-        run: scripts/build-native.sh
       - name: The committed module is the one the source builds
-        run: |
-          if ! git diff --quiet -- tabs/annotate.wasm; then
-            echo "::error file=tabs/annotate.wasm::tabs/annotate.wasm is not what native/ builds: run scripts/build-native.sh and commit it."
-            exit 1
-          fi
+        run: scripts/build-native.sh --check
