@@ -1,7 +1,6 @@
 //! The marks on an image: what a drag makes of a tool, how the marks are drawn
 //! (the canvas Hangar shows and the PNG it writes alike), and what they add up
-//! to. Coordinates are the image's own pixels: `tabs/annotate/model.js`,
-//! ported.
+//! to. Coordinates are the image's own pixels.
 
 use hangar_kit_sdk::ui::{Align, Ink, Mark, Point, Shape as Drawn, Tool as Pen};
 use serde::Serialize;

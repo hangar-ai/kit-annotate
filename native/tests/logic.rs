@@ -1,4 +1,4 @@
-//! test/logic.test.js, ported: the words, the params, the names, the zoom.
+//! The words, the params, the names, the zoom.
 
 use std::collections::BTreeSet;
 

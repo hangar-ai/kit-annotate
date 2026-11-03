@@ -1,20 +1,20 @@
 //! Annotate, native: a capture drawn on with an arrow, a rectangle, a
 //! freehand stroke and numbered notes, written as a PNG and a JSON beside it,
-//! then told to the agent that asked. The page in `tabs/annotate/` is the
-//! same tab for Hangar 1.x; this is `controller.js` and `view.js` as a
-//! [`Kit`], with `logic.js`, `model.js` and `answer.js` in their own modules.
+//! then told to the agent that asked. It is a [`Kit`] (its update and its
+//! view), with the words and names (`logic`), the marks (`model`) and the
+//! message and JSON (`answer`) in their own modules.
 //!
-//! What differs from the page, because a native tab works so:
+//! What a native tab does its own way:
 //!
 //! - The capture is never read into the module: the canvas shows it where it
 //!   is (`ImageSource::File`), its size comes from `image.size`, and Hangar
-//!   draws the PNG itself (`canvas.export`), scaled down as the page did.
+//!   draws the PNG itself (`canvas.export`), scaled down when the full size would pass 10 MB.
 //! - A picture from outside the workspace comes from the file chooser
 //!   (`files.pick`, under `files.read`) or the clipboard (`ui.pasteImage`,
 //!   Ctrl+V or a button), held by the tab. A file dropped on the tab is not
 //!   heard: the window hears a drop, not where it lands.
 //! - Hangar draws a drag while it moves and sends the finished mark: the tab
-//!   keeps it or drops it as `model.fromDrag` did.
+//!   keeps it or drops it.
 //! - Ctrl+Z reaches the tab while a field has the focus (iced's fields have no
 //!   undo): the tab ignores it after typing, until a press elsewhere.
 

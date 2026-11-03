@@ -1,7 +1,7 @@
 //! What leaves the tab for the agent: the message `panes.send` carries, and
 //! the small JSON file beside the image. In English whatever the tab's
 //! language, because an agent reads it; the person's own words (notes,
-//! comment) go through as they wrote them. `tabs/annotate/answer.js`, ported.
+//! comment) go through as they wrote them.
 
 use serde::Serialize;
 

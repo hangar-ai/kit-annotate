@@ -1,4 +1,4 @@
-//! test/model.test.js, ported: what a drag makes, how marks are drawn, what
+//! What a drag makes, how marks are drawn, what
 //! the JSON and the message say.
 
 use serde_json::json;

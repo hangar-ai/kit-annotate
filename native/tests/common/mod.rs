@@ -1,5 +1,5 @@
 //! Shared by the tests: the tab started as Hangar would start it, the answers
-//! Hangar would give (test/helpers.js's fake Hangar, as replies), and ways to
+//! Hangar would give (as replies), and ways to
 //! read the page that the harness does not have.
 #![allow(dead_code, unused_imports)]
 

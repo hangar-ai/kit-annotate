@@ -1,6 +1,6 @@
 //! What the tab says and the small rules around it: its words in English and
 //! French, the params, the names of the files it writes, the zoom. No widget,
-//! no call: `tabs/annotate/logic.js`, ported.
+//! no call.
 
 use hangar_kit_sdk::format::LocalTime;
 use hangar_kit_sdk::i18n::Strings;

@@ -1,4 +1,4 @@
-//! test/view.test.js, ported: what the page draws for each state, in both
+//! What the tab draws for each state, in both
 //! languages, the canvas driven as Hangar drives it.
 
 mod common;

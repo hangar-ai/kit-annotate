@@ -1,4 +1,4 @@
-//! test/controller.test.js, ported: what opens, what is sent, what is said
+//! What opens, what is sent, what is said
 //! when something is refused, on the harness, Hangar's answers given by hand.
 
 mod common;
