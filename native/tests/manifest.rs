@@ -1,6 +1,5 @@
-//! test/manifest.test.js's cases for the native tab: the manifest's `native`
-//! field, the module it names, and what the tab calls against what it
-//! declares.
+//! The native tab and its manifest: the module the tab's `entry` names, and
+//! what the tab calls against what it declares.
 
 mod common;
 
@@ -45,14 +44,18 @@ fn safe_path(relative: &str, extension: &str, at: &str) {
 }
 
 #[test]
-fn the_tab_keeps_its_page_for_hangar_1_and_names_its_module() {
+fn the_tab_is_native_and_its_entry_is_its_module() {
     let manifest = manifest();
-    assert_eq!(manifest["schema"], 1, "a native field needs no schema 2");
-    assert_eq!(manifest["hangar"], ">=1.9.0");
+    assert_eq!(manifest["schema"], 2, "a native tab needs schema 2");
+    assert_eq!(manifest["hangar"], ">=2.0.0");
     let tab = &manifest["tabs"][0];
-    safe_path(tab["entry"].as_str().unwrap(), ".html", "entry");
-    assert_eq!(tab["native"], "tabs/annotate.wasm");
-    safe_path(tab["native"].as_str().unwrap(), ".wasm", "native");
+    assert_eq!(tab["entry"], "tabs/annotate.wasm");
+    safe_path(tab["entry"].as_str().unwrap(), ".wasm", "entry");
+    assert!(tab.get("native").is_none(), "no `native` field in schema 2");
+    assert!(
+        !kit().join("tabs/annotate").exists(),
+        "no page beside the module"
+    );
     let mut permissions: Vec<&str> = tab["permissions"]
         .as_array()
         .unwrap()

@@ -1,5 +1,5 @@
 {
-  "schema": 1,
+  "schema": 2,
   "id": "annotate",
   "name": "Annotate",
   "version": "0.1.0",
@@ -7,7 +7,7 @@
   "author": "Hangar",
   "homepage": "https://github.com/hangar-ai/kit-annotate",
   "icon": "icon.svg",
-  "hangar": ">=1.9.0",
+  "hangar": ">=2.0.0",
   "gallery": {
     "permissionsSummary": "Reads an image of the workspace, writes the annotated PNG and a JSON of the notes to .hangar/annotations/, and tells the agent that asked where they are.",
     "tags": ["screenshot", "feedback", "tab"]
@@ -16,8 +16,7 @@
     {
       "id": "annotate",
       "title": "Annotate",
-      "entry": "tabs/annotate/index.html",
-      "native": "tabs/annotate.wasm",
+      "entry": "tabs/annotate.wasm",
       "icon": "icon.svg",
       "permissions": ["files.read", "files.write", "panes.send"],
       "params": {
