@@ -2,7 +2,7 @@
   "schema": 2,
   "id": "annotate",
   "name": "Annotate",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Circle what is wrong on a capture, write a word beside it, and the agent that asked receives the annotated image and your notes.",
   "author": "Hangar",
   "homepage": "https://github.com/hangar-ai/kit-annotate",
